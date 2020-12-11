@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'antd/dist/antd.css'
 import { Input } from 'antd';
 const { Search } = Input;
@@ -9,9 +9,11 @@ const { Search } = Input;
 
 const SearchSeries = () => {
 
+    const [query, setQuery] = useState('');
+
     const searchSeries = async () => {
         //API Call
-        const url = 'http://api.tvmaze.com/search/shows?q=simpsons';
+        const url = `http://api.tvmaze.com/search/shows?q=${query}`;
 
         try{
             const res = await fetch(url);
@@ -27,6 +29,8 @@ const SearchSeries = () => {
             <Search className="input"
             placeholder="Search series by name"
             enterButton="Search"
+            value={query}
+            onChange={(e) => setQuery (e.target.value)}
             onSearch={searchSeries}
             size="large"                 
         />
