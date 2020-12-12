@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './cssComponents/SearchSeries.css'
 import Cards from './Cards'
 import 'antd/dist/antd.css'
 import { Input } from 'antd';
@@ -35,7 +36,7 @@ const SearchSeries = () => {
                     size="large"
                 />
             </form>
-            <div className="cards-list">
+            <div className="cardsList">
                 {series.map(serie => (
                     <Cards serie={serie} key={serie.show.id} />
                 ))}
